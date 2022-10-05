@@ -1,0 +1,11 @@
+CREATE DATABASE ouvidoria;
+
+USE ouvidoria;
+
+CREATE TABLE occurrences(
+	id INT AUTO_INCREMENT,
+	user VARCHAR(40),
+	type VARCHAR(30),
+	register VARCHAR(250),
+	PRIMARY KEY(id)
+);
