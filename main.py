@@ -22,7 +22,8 @@ while True:
                         [1] Registrar Ocorrência
                         [2] Listar Ocorrências 
                         [3] Apagar Ocorrências 
-                        [4] Sair 
+                        [4] Alterar Reclamação
+                        [5] Sair  
             ''')
     menu = int(input('Selecione uma opção: '))
 
@@ -49,23 +50,36 @@ while True:
             sugestion.add_new_sugestion(user, register)
     
     elif menu == 2:
-        print('''
-                TIPOS DE OCORRÊNCIAS
+        print('''       LISTAR
                 
-                [1] Reclamações 
-                [2] Elogios
-                [3] Sugestões
-         ''')
-        listOccurrences = int(input('Qual opção deseja listar: '))
-
-        if listOccurrences == 1:
-            claims.list_all_claims()
+                [1] Todas as ocorrências
+                [2] Tipo de ocorrência        
+        ''')
+        option = int(input('Digite o número da opção que deseja realizar: '))
         
-        elif listOccurrences == 2:
+        if option == 1:
+            claims.list_all_claims()
             compliment.list_all_compliments()
-
-        elif listOccurrences == 3:
             sugestion.list_all_sugestions()
+
+        elif option == 2:
+            print('''
+                    TIPOS DE OCORRÊNCIAS
+                    
+                    [1] Reclamações 
+                    [2] Elogios
+                    [3] Sugestões
+            ''')
+            listOccurrences = int(input('Qual opção deseja listar: '))
+
+            if listOccurrences == 1:
+                claims.list_all_claims()
+            
+            elif listOccurrences == 2:
+                compliment.list_all_compliments()
+
+            elif listOccurrences == 3:
+                sugestion.list_all_sugestions()
     
     elif menu == 3:
         print(''' 
@@ -125,5 +139,11 @@ while True:
             deleteAll.delete_all_occurrences()
     
     elif menu == 4:
+        claims.list_all_claims()
+        idOption = input('Digite o número ID da reclamação que deseja alterar: ')
+        register = input('Digite a sua nova reclamação: ')
+        claims.uptade_especifc_claim(register, idOption)
+    
+    elif menu == 5:
         print('Obrigado por usar o programa!')
         break

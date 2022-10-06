@@ -91,3 +91,26 @@ class Claim:
         connection.close()
 
         print('Todas as reclamações foram excluídas!')
+
+        # Função para editar uma reclamação especifica
+
+    def uptade_especifc_claim(self, register, idOption):
+        connection = mysql.connector.connect(
+            host = 'localhost',
+            user = 'root',
+            password = 'guerra91',
+            database = 'ouvidoria'
+        )
+
+        cursor = connection.cursor()
+
+        sql = "UPDATE occurrences SET register = %s WHERE id = %s "
+        data = (register, idOption)
+
+        cursor.execute(sql, data)
+        connection.commit()
+        
+        cursor.close()
+        connection.close()
+
+        print(f'Reclamação {idOption} alterada com sucesso!')
